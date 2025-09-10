@@ -13,11 +13,12 @@ public class UsuarioService {
         this.repository = repository;
     }
 
-    public Usuario autenticar(String username, String senha) {
+
+    public Usuario fazerLogin(String username, String senha) {
         return repository.findByUsernameAndSenha(username, senha).orElse(null);
     }
 
-    public Usuario salvarUsuario(Usuario usuario) {
+    public Usuario cadastrarNovoUsuario(Usuario usuario) {
         return repository.save(usuario);
     }
 

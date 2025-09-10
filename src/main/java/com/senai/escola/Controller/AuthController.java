@@ -15,10 +15,12 @@ public class AuthController {
         this.usuarioService = usuarioService;
     }
 
+
     @PostMapping("/login")
     public String login(@RequestBody Usuario usuario) {
 
-        Usuario user = usuarioService.autenticar(usuario.getUsername(), usuario.getSenha());
+        Usuario user = usuarioService.fazerLogin(usuario.getUsername(), usuario.getSenha());
+
         if (user != null) {
             return "Login realizado com sucesso! Bem-vindo, " + user.getUsername();
         }
@@ -27,7 +29,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public Usuario register(@RequestBody Usuario usuario) { //register = cadastrar
-        return usuarioService.salvarUsuario(usuario);
+        return usuarioService.cadastrarNovoUsuario(usuario);
     }
 
 
